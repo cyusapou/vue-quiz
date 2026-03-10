@@ -51,6 +51,19 @@ main {
   max-width: 680px;
   margin: 0 auto 24px auto;
 }
+.subcont > div:nth-last-child(3) > div::before {
+  content: 'Likes: ';
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #888;
+}
+
+.subcont > div:nth-last-child(2) > div::before {
+  content: 'Dislikes: ';
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #888;
+}
 
 .subcont {
   background: #ffffff;
@@ -110,5 +123,4 @@ main {
   margin-top: 16px;
   text-align: right;
 }
-
 </style>
