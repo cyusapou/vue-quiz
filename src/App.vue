@@ -9,10 +9,19 @@
       response.value = res.data.posts
     })
   })
+  let show = ref(true)
+  let box = ref()
+  function maximize(index){
+    show.value = false
+    box.value = index 
+
+    
+  }
 </script>
 <template>
+  <div v-if="show">
   <main>
-  <div v-for="datas in response" class="container">
+  <div v-for="(datas , index) in response" class="container" @click="maximize(index)">
     <div class="subcont">
       <div class="title">
         {{ datas.title }}
@@ -30,7 +39,30 @@
     </div>
   </div>
   </main>
+  </div>
+ <div v-else-if="response.length" class="page">
+
+  <div class="container  cont">
+  <div class="subcont">
+      <div class="title">
+        {{ response[box].title }}
+      </div>
+      <div class="body">
+        {{ response[box].body }}
+      </div>
+      <div v-for="tg in response[box].tags">
+        <div class="tag">{{ tg }}</div>
+      </div>
+      <div v-for="react in response[box].reactions">
+      <div>{{ react }}</div>
+      </div>
+      <div class="views">{{ response[box].views }} views</div>
+    </div>
+    </div>
+    
+</div>
 </template>
+
 <style scoped>
   
 
@@ -110,5 +142,15 @@ main {
   border-top: 1px solid #f0f0ee;
   margin-top: 16px;
   text-align: right;
+}
+.page {
+  
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cont {
+  scale: 2;
 }
 </style>
